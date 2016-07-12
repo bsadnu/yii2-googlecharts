@@ -8,7 +8,7 @@ use yii\helpers\Html;
 use yii\web\View;
 
 /**
- * Column chart widget.
+ * Column chart widget.ttt
  * @author Stanislav Bannikov <bsadnu@gmail.com>
  */
 class ColumnChart extends Widget
