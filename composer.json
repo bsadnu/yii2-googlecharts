@@ -17,11 +17,5 @@
         "psr-4": {
             "bsadnu\\googlecharts\\": ""
         }
-    },
-    "repositories":[
-        {
-            "type": "git",
-            "url": "https://github.com/bsadnu/yii2-googlecharts.git"
-        }
-    ]    
+    }   
 }
