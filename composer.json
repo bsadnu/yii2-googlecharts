@@ -1,0 +1,27 @@
+{
+    "name": "bsadnu/yii2-googlecharts",
+    "description": "Google Charts Extension for Yii 2 framework",
+    "type": "yii2-extension",
+    "keywords": ["yii2", "extension", "google", "chart", "charts", "googlecharts"],
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "Stanislav Bannikov",
+            "email": "bsadnu@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+    },
+    "autoload": {
+        "psr-4": {
+            "bsadnu\\googlecharts\\": ""
+        }
+    },
+    "repositories":[
+        {
+            "type": "git",
+            "url": "https://github.com/bsadnu/yii2-googlecharts.git"
+        }
+    ]    
+}
