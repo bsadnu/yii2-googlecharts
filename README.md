@@ -27,8 +27,9 @@ to the require section of your composer.json.
 Usage
 -----
 
-To use any of these widgets,  simply add the following code in your view:
+To use any of these widgets,  simply add the following code in your view.
 
+### Column Chart Example
 ```php
 ...
 use bsadnu\googlecharts\ColumnChart;
@@ -37,9 +38,9 @@ use bsadnu\googlecharts\ColumnChart;
 
 ```php
 <?= ColumnChart::widget([
-	'id' => 'first-chart',
+    'id' => 'my-column-chart-id',
     'data' => [
-        ['Год', 'Мухи', 'Слоны'],
+        ['Year', 'Sales', 'Expenses'],
         ['2013',  1000,      400],
         ['2014',  1170,      460],
         ['2015',  660,       1120],
