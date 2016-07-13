@@ -57,7 +57,7 @@ use bsadnu\googlecharts\ColumnChart;
         ],
         'tooltip' => [
         	'textStyle' => [
-        		'fontName' => 'Roboto',
+        		'fontName' => 'Verdana',
         		'fontSize' => 13
         	]
         ],
