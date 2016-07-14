@@ -387,6 +387,403 @@ use bsadnu\googlecharts\ComboChart;
 ]) ?>
 ```
 
+### Line Chart Example
+```php
+...
+use bsadnu\googlecharts\LineChart;
+...
+```
+1) Simple Line Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/LineChartSimple.png)
+```php
+<?= LineChart::widget([
+	'id' => 'my-simple-line-chart-id',
+	'data' => [
+		['Year', 'Sales', 'Expenses'],
+		['2004',  1000,      400],
+		['2005',  1170,      460],
+		['2006',  660,       1120],
+		['2007',  1030,      540]
+	],
+	'options' => [
+	    'fontName' => 'Verdana',
+	    'height' => 400,
+	    'curveType' => 'function',
+	    'fontSize' => 12,
+	    'chartArea' => [
+	    	'left' => '5%',
+	    	'width' => '90%',
+	    	'height' => 350
+	    ],
+	    'pointSize' => 4,
+	    'tooltip' => [
+	    	'textStyle' => [
+	    		'fontName' => 'Verdana',
+	    		'fontSize' => 13
+	    	]
+	    ],
+	    'vAxis' => [
+	    	'title' => 'Sales and Expenses',
+			'titleTextStyle' => [
+				'fontSize' => 13,
+				'italic' => false
+			],        	
+	    	'gridlines' => [
+	    		'color' => '#e5e5e5',
+	    		'count' => 10
+	    	],            	
+	    	'minValue' => 0
+	    ],        
+	    'legend' => [
+	    	'position' => 'top',
+	    	'alignment' => 'center',
+	    	'textStyle' => [
+	    		'fontSize' => 12
+	    	]
+	    ]            
+	]
+]) ?>
+```
+
+2) Line Intervals Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/LineChartIntervals.png)
+```php
+<?= LineChart::widget([
+	'id' => 'my-line-intervals-id',
+	'isIntervalType' => true,
+	'data' => [
+		['a', 100, 90, 110, 85, 96, 104, 120],
+		['b', 120, 95, 130, 90, 113, 124, 140],
+		['c', 130, 105, 140, 100, 117, 133, 139],
+		['d', 90, 85, 95, 85, 88, 92, 95],
+		['e', 70, 74, 63, 67, 69, 70, 72],
+		['f', 30, 39, 22, 21, 28, 34, 40],
+		['g', 80, 77, 83, 70, 77, 85, 90],
+		['h', 100, 90, 110, 85, 95, 102, 110]
+	],
+	'options' => [
+		'fontName' => 'Verdana',
+		'height' => 400,
+		'curveType' => 'function',
+		'fontSize' => 12,
+		'chartArea' => [
+			'left' => '5%',
+			'width' => '90%',
+			'height' => 350
+		],
+		'lineWidth' => 3,
+		'tooltip' => [
+			'textStyle' => [
+				'fontName' => 'Verdana',
+				'fontSize' => 13
+			]
+		],
+		'series' => [
+			[
+				'color' => '#EF5350'
+			]
+		],
+		'intervals' => [
+			'style' => 'line'
+		],
+		'pointSize' => 5,	
+		'vAxis' => [
+			'title' => 'Number values',
+			'titleTextStyle' => [
+				'fontSize' => 13,
+				'italic' => false
+			],        	
+			'gridlines' => [
+				'color' => '#e5e5e5',
+				'count' => 10
+			],            	
+			'minValue' => 0
+		],        
+		'legend' => 'none'            
+	]
+]) ?>
+```
+
+3) Line Intervals Area Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/LineChartIntervalsArea.png)
+```php
+<?= LineChart::widget([
+	'id' => 'my-area-intervals-id',
+	'isIntervalType' => true,
+	'data' => [
+		['a', 100, 90, 110, 85, 96, 104, 120],
+		['b', 120, 95, 130, 90, 113, 124, 140],
+		['c', 130, 105, 140, 100, 117, 133, 139],
+		['d', 90, 85, 95, 85, 88, 92, 95],
+		['e', 70, 74, 63, 67, 69, 70, 72],
+		['f', 30, 39, 22, 21, 28, 34, 40],
+		['g', 80, 77, 83, 70, 77, 85, 90],
+		['h', 100, 90, 110, 85, 95, 102, 110]
+	],
+	'options' => [
+		'fontName' => 'Verdana',
+		'height' => 400,
+		'curveType' => 'function',
+		'fontSize' => 12,
+		'chartArea' => [
+			'left' => '5%',
+			'width' => '90%',
+			'height' => 350
+		],
+		'lineWidth' => 2,
+		'tooltip' => [
+			'textStyle' => [
+				'fontName' => 'Verdana',
+				'fontSize' => 13
+			]
+		],
+		'series' => [
+			[
+				'color' => '#43A047'
+			]
+		],
+		'intervals' => [
+			'style' => 'area'
+		],
+		'pointSize' => 5,	
+		'vAxis' => [
+			'title' => 'Number values',
+			'titleTextStyle' => [
+				'fontSize' => 13,
+				'italic' => false
+			],        	
+			'gridlines' => [
+				'color' => '#e5e5e5',
+				'count' => 10
+			],            	
+			'minValue' => 0
+		],        
+		'legend' => 'none'            
+	]
+]) ?>
+```
+
+### Area Chart Example
+```php
+...
+use bsadnu\googlecharts\AreaChart;
+...
+```
+1) Simple Area Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/AreaChart.png)
+```php
+<?= AreaChart::widget([
+	'id' => 'my-simple-area-chart-id',
+    'data' => [
+		['Year', 'Sales', 'Expenses'],
+		['2004',  1000,      400],
+		['2005',  1170,      460],
+		['2006',  660,       1120],
+		['2007',  1030,      540]
+    ],
+    'options' => [
+        'fontName' => 'Verdana',
+        'height' => 400,
+        'curveType' => 'function',
+        'fontSize' => 12,
+        'areaOpacity' => 0.4,
+        'chartArea' => [
+        	'left' => '5%',
+        	'width' => '90%',
+        	'height' => 350
+        ],
+        'pointSize' => 4,
+        'tooltip' => [
+        	'textStyle' => [
+        		'fontName' => 'Verdana',
+        		'fontSize' => 13
+        	]
+        ],
+        'vAxis' => [
+        	'title' => 'Sales and Expenses',
+			'titleTextStyle' => [
+				'fontSize' => 13,
+				'italic' => false
+			],        	
+        	'gridarea' => [
+        		'color' => '#e5e5e5',
+        		'count' => 10
+        	],            	
+        	'minValue' => 0
+        ],        
+        'legend' => [
+        	'position' => 'top',
+        	'alignment' => 'end',
+        	'textStyle' => [
+        		'fontSize' => 12
+        	]
+        ]            
+    ]
+]) ?>
+```
+
+2) Stacked Area Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/AreaChartStacked.png)
+```php
+<?= AreaChart::widget([
+	'id' => 'my-staked-area-chart-id',
+	'data' => [
+		['Year', 'Cars', 'Trucks', 'Drones', 'Segways'],
+		['2013',  870,  460, 310, 220],
+		['2014',  460,  720, 220, 460],
+		['2015',  930,  640, 340, 330],
+		['2016',  1000,  400, 180, 500]
+	],
+	'options' => [
+		'fontName' => 'Verdana',
+		'height' => 400,
+		'curveType' => 'function',
+		'fontSize' => 12,
+		'areaOpacity' => 0.4,
+		'chartArea' => [
+			'left' => '5%',
+			'width' => '90%',
+			'height' => 350
+		],
+		'isStacked' => true,
+		'pointSize' => 4,
+		'tooltip' => [
+			'textStyle' => [
+				'fontName' => 'Verdana',
+				'fontSize' => 13
+			]
+		],
+		'lineWidth' => 1.5,
+		'vAxis' => [
+			'title' => 'Number values',
+			'titleTextStyle' => [
+				'fontSize' => 13,
+				'italic' => false
+			],        	
+			'gridlines' => [
+				'color' => '#e5e5e5',
+				'count' => 10
+			],            	
+			'minValue' => 0
+		],        
+		'legend' => [
+			'position' => 'top',
+			'alignment' => 'end',
+			'textStyle' => [
+				'fontSize' => 12
+			]
+		]            
+	]
+]) ?>
+```
+
+### Stepped Area Chart Example
+```php
+...
+use bsadnu\googlecharts\SteppedAreaChart;
+...
+```
+![demo](https://dl.dropboxusercontent.com/u/94373707/SteppedAreaChart.png)
+```php
+<?= SteppedAreaChart::widget([
+	'id' => 'my-stepped-area-chart-id',
+	'data' => [
+		['Director (Year)',  'Rotten Tomatoes', 'IMDB'],
+		['Alfred Hitchcock (1935)', 8.4,         7.9],
+		['Ralph Thomas (1959)',     6.9,         6.5],
+		['Don Sharp (1978)',        6.5,         6.4],
+		['James Hawes (2008)',      4.4,         6.2]
+	],
+	'options' => [
+		'fontName' => 'Verdana',
+		'height' => 400,
+		'isStacked' => true,
+		'fontSize' => 12,
+		'chartArea' => [
+			'left' => '5%',
+			'width' => '90%',
+			'height' => 350
+		],
+		'lineWidth' => 1,
+		'tooltip' => [
+			'textStyle' => [
+				'fontName' => 'Verdana',
+				'fontSize' => 13
+			]
+		],
+		'pointSize' => 5,	
+		'vAxis' => [
+			'title' => 'Accumulated Rating',
+			'titleTextStyle' => [
+				'fontSize' => 13,
+				'italic' => false
+			],        	
+			'gridlines' => [
+				'color' => '#e5e5e5',
+				'count' => 10
+			],            	
+			'minValue' => 0
+		],        
+		'legend' => [
+			'position' => 'top',
+			'alignment' => 'center',
+			'textStyle' => [
+				'fontSize' => 12
+			]
+		]            
+	]
+]) ?>
+```
+
+### Pie Chart Example
+```php
+...
+use bsadnu\googlecharts\PieChart;
+...
+```
+![demo](https://dl.dropboxusercontent.com/u/94373707/PieChart.png)
+```php
+<?= PieChart::widget([
+    'id' => 'my-pie-chart-id',
+    'data' => [
+        ['Major', 'Degrees'],
+        ['Business', 256070],
+        ['Education', 108034],
+        ['Social Sciences & History', 127101],
+        ['Health', 81863],
+        ['Psychology', 74194]
+    ],
+    'extraData' => [
+        ['Major', 'Degrees'],
+        ['Business', 358293],
+        ['Education', 101265],
+        ['Social Sciences & History', 172780],
+        ['Health', 129634],
+        ['Psychology', 97216]
+    ],                
+    'options' => [
+        'fontName' => 'Verdana',
+        'height' => 300,
+        'width' => 500,
+        'chartArea' => [
+            'left' => 50,
+            'width' => '90%',
+            'height' => '90%'
+        ],
+        'diff' => [
+            'extraData' => [
+                'inCenter' => false
+            ]
+        ]
+    ]
+]) ?>
+```
+
 ## License
 
 **yii2-googlecharts** is released under the BSD 2-Clause License. See the bundled [LICENSE](https://github.com/bsadnu/yii2-googlecharts/blob/master/LICENSE) for details.
