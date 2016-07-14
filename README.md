@@ -37,7 +37,7 @@ use bsadnu\googlecharts\ColumnChart;
 ```
 Simple Column Chart
 
-![demo](https://cloud.githubusercontent.com/assets/3985601/4497539/fb54bd70-4a6f-11e4-89a3-7c96c9fd9f0e.jpg)
+![demo](https://dl.dropboxusercontent.com/u/94373707/ColumnChartSimple.png)
 ```php
 <?= ColumnChart::widget([
 	'id' => 'my-column-chart-id',
@@ -69,6 +69,163 @@ Simple Column Chart
         		'fontSize' => 13,
         		'italic' => false
         	],
+        	'gridlines' => [
+        		'color' => '#e5e5e5',
+        		'count' => 10
+        	],            	
+        	'minValue' => 0
+        ],
+        'legend' => [
+        	'position' => 'top',
+        	'alignment' => 'center',
+        	'textStyle' => [
+        		'fontSize' => 12
+        	]
+        ]            
+    ]
+]) ?>
+```
+
+Stacked Column Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/ColumnChartStacked.png)
+```php
+<?= ColumnChart::widget([
+	'id' => 'my-stacked-column-chart-id',
+    'data' => [
+		['Genre', 'Fantasy & Sci Fi', 'Romance', 'Mystery/Crime', 'General', 'Western', 'Literature'],
+		['2000', 20, 30, 35, 40, 45, 30],
+		['2005', 14, 20, 25, 30, 48, 30],
+		['2010', 10, 24, 20, 32, 18, 5],
+		['2015', 15, 25, 30, 35, 20, 15],
+		['2020', 16, 22, 23, 30, 16, 9],
+		['2025', 12, 26, 20, 40, 20, 30],
+		['2030', 28, 19, 29, 30, 12, 13]
+    ],
+    'options' => [
+        'fontName' => 'Verdana',
+        'height' => 400,
+        'fontSize' => 12,
+        'chartArea' => [
+        	'left' => '5%',
+        	'width' => '90%',
+        	'height' => 350
+        ],
+        'isStacked' => true,
+        'tooltip' => [
+        	'textStyle' => [
+        		'fontName' => 'Verdana',
+        		'fontSize' => 13
+        	]
+        ],
+        'vAxis' => [
+        	'title' => 'Sales and Expenses',
+        	'titleTextStyle' => [
+        		'fontSize' => 13,
+        		'italic' => false
+        	],
+        	'gridlines' => [
+        		'color' => '#e5e5e5',
+        		'count' => 10
+        	],            	
+        	'minValue' => 0
+        ],
+        'legend' => [
+        	'position' => 'top',
+        	'alignment' => 'center',
+        	'textStyle' => [
+        		'fontSize' => 12
+        	]
+        ]            
+    ]
+]) ?>
+```
+
+### Bar Chart Example
+```php
+...
+use bsadnu\googlecharts\BarChart;
+...
+```
+Simple Bar Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/BarChart.png)
+```php
+<?= BarChart::widget([
+	'id' => 'my-bar-chart-id',
+    'data' => [
+        ['Year', 'Sales', 'Expenses'],
+        ['2004',  1000,      400],
+        ['2005',  1170,      460],
+        ['2006',  660,       1120],
+        ['2007',  1030,      540]
+    ],
+    'options' => [
+        'fontName' => 'Verdana',
+        'height' => 400,
+        'fontSize' => 12,
+        'chartArea' => [
+        	'left' => '5%',
+        	'width' => '90%',
+        	'height' => 350
+        ],
+        'tooltip' => [
+        	'textStyle' => [
+        		'fontName' => 'Verdana',
+        		'fontSize' => 13
+        	]
+        ],
+        'vAxis' => [
+        	'gridlines' => [
+        		'color' => '#e5e5e5',
+        		'count' => 10
+        	],            	
+        	'minValue' => 0
+        ],
+        'legend' => [
+        	'position' => 'top',
+        	'alignment' => 'center',
+        	'textStyle' => [
+        		'fontSize' => 12
+        	]
+        ]            
+    ]
+]) ?>
+```
+
+Stacked Bar Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/BarChartStacked.png)
+```php
+<?= BarChart::widget([
+	'id' => 'my-stacked-bar-chart-id',
+    'data' => [
+		['Genre', 'Fantasy & Sci Fi', 'Romance', 'Mystery/Crime', 'General', 'Western', 'Literature'],
+		['2000', 20, 30, 35, 40, 45, 30],
+		['2005', 14, 20, 25, 30, 48, 30],
+		['2010', 10, 24, 20, 32, 18, 5],
+		['2015', 15, 25, 30, 35, 20, 15],
+		['2020', 16, 22, 23, 30, 16, 9],
+		['2025', 12, 26, 20, 40, 20, 30],
+		['2030', 28, 19, 29, 30, 12, 13]
+    ],
+    'options' => [
+        'fontName' => 'Verdana',
+        'height' => 400,
+        'fontSize' => 12,
+        'chartArea' => [
+        	'left' => '5%',
+        	'width' => '90%',
+        	'height' => 350
+        ],
+        'isStacked' => true,
+        'tooltip' => [
+        	'textStyle' => [
+        		'fontName' => 'Verdana',
+        		'fontSize' => 13
+        	]
+        ],
+        'hAxis' => [
         	'gridlines' => [
         		'color' => '#e5e5e5',
         		'count' => 10
