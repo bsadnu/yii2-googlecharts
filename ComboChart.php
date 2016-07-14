@@ -10,15 +10,14 @@ use yii\web\View;
 use bsadnu\googlecharts\GoogleJsApiAsset;
 
 /**
- * Column chart widget.
- * A column graph is a chart that uses vertical bars to show comparisons among categories.
- * One axis of the chart shows the specific categories being compared, and the other axis represents a discrete value.
- * Like all Google charts, column charts display tooltips when the user hovers over the data.
- * By default, text labels are hidden, but can be turned on in chart settings.
+ * Combo chart widget.
+ * A chart that lets you render each series as a different marker type from the following list: line, area, bars, candlesticks, and stepped area.
+ * To assign a default marker type for series, specify the seriesType property.
+ * Use the series property to specify properties of each series individually.
  * 
  * @author Stanislav Bannikov <bsadnu@gmail.com>
  */
-class ColumnChart extends Widget
+class ComboChart extends Widget
 {
     /**
      * @var string unique id of chart
@@ -29,11 +28,12 @@ class ColumnChart extends Widget
      * @var array table of data
      * Example:
      * [
-     *     ['Year', 'Sales', 'Expenses'],
-     *     ['2013',  1000,      400],
-     *     ['2014',  1170,      460],
-     *     ['2015',  660,       1120],
-     *     ['2016',  1030,      540]
+     *     ['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
+     *     ['2004/05',  165,      938,         522,             998,           450,      614.6],
+     *     ['2005/06',  135,      1120,        599,             1268,          288,      682],
+     *     ['2006/07',  157,      1167,        587,             807,           397,      623],
+     *     ['2007/08',  139,      1110,        615,             968,           215,      609.4],
+     *     ['2008/09',  136,      691,         629,             1026,          366,      569.6]
      * ]
      */
     public $data = [];
@@ -50,6 +50,13 @@ class ColumnChart extends Widget
      *         'width' => '90%',
      *         'height' => 350
      *     ],
+     *     'seriesType' => 'bars',
+     *     'series' => [
+     *         5 => [
+     *             'type' => 'line',
+     *             'pointSize' => 5
+     *         ]
+     *     ],
      *     'tooltip' => [
      *         'textStyle' => [
      *             'fontName' => 'Verdana',
@@ -57,11 +64,6 @@ class ColumnChart extends Widget
      *         ]
      *     ],
      *     'vAxis' => [
-     *         'title' => 'Sales and Expenses',
-     *         'titleTextStyle' => [
-     *             'fontSize' => 13,
-     *             'italic' => false
-     *         ],
      *         'gridlines' => [
      *             'color' => '#e5e5e5',
      *             'count' => 10
@@ -116,21 +118,20 @@ class ColumnChart extends Widget
     private function getJs()
     {
         $uniqueInt = mt_rand(1, 999999);
-
+        
         $js = "
             google.load('visualization', '1', {packages:['corechart']});
-            google.setOnLoadCallback(drawColumn". $uniqueInt .");
+            google.setOnLoadCallback(drawCombo". $uniqueInt .");
         ";
         $js .= "
-            function drawColumn". $uniqueInt ."() {
+            function drawCombo". $uniqueInt ."() {
 
                 var data". $uniqueInt ." = google.visualization.arrayToDataTable(". Json::encode($this->data) .");
 
-                var options_column". $uniqueInt ." = ". Json::encode($this->options) .";
+                var options_combo". $uniqueInt ." = ". Json::encode($this->options) .";
 
-                var column". $uniqueInt ." = new google.visualization.ColumnChart($('#". $this->id ."')[0]);
-                column". $uniqueInt .".draw(data". $uniqueInt .", options_column". $uniqueInt .");
-
+                var combo". $uniqueInt ." = new google.visualization.ComboChart($('#". $this->id ."')[0]);
+                combo". $uniqueInt .".draw(data". $uniqueInt .", options_combo". $uniqueInt .");
             }
         ";        
         $js .= "
@@ -140,7 +141,7 @@ class ColumnChart extends Widget
                 $('.sidebar-control').on('click', resize);
 
                 function resize() {
-                    drawColumn". $uniqueInt ."();
+                    drawCombo". $uniqueInt ."();
                 }
             });
         ";

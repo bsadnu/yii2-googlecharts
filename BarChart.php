@@ -10,15 +10,15 @@ use yii\web\View;
 use bsadnu\googlecharts\GoogleJsApiAsset;
 
 /**
- * Column chart widget.
- * A column graph is a chart that uses vertical bars to show comparisons among categories.
+ * Bar chart widget.
+ * A bar graph is a chart that uses horizontal bars to show comparisons among categories.
  * One axis of the chart shows the specific categories being compared, and the other axis represents a discrete value.
  * Like all Google charts, column charts display tooltips when the user hovers over the data.
  * By default, text labels are hidden, but can be turned on in chart settings.
  * 
  * @author Stanislav Bannikov <bsadnu@gmail.com>
  */
-class ColumnChart extends Widget
+class BarChart extends Widget
 {
     /**
      * @var string unique id of chart
@@ -30,10 +30,10 @@ class ColumnChart extends Widget
      * Example:
      * [
      *     ['Year', 'Sales', 'Expenses'],
-     *     ['2013',  1000,      400],
-     *     ['2014',  1170,      460],
-     *     ['2015',  660,       1120],
-     *     ['2016',  1030,      540]
+     *     ['2004',  1000,      400],
+     *     ['2005',  1170,      460],
+     *     ['2006',  660,       1120],
+     *     ['2007',  1030,      540]
      * ]
      */
     public $data = [];
@@ -57,11 +57,6 @@ class ColumnChart extends Widget
      *         ]
      *     ],
      *     'vAxis' => [
-     *         'title' => 'Sales and Expenses',
-     *         'titleTextStyle' => [
-     *             'fontSize' => 13,
-     *             'italic' => false
-     *         ],
      *         'gridlines' => [
      *             'color' => '#e5e5e5',
      *             'count' => 10
@@ -108,7 +103,7 @@ class ColumnChart extends Widget
     {
         $view = $this->getView();
         GoogleJsApiAsset::register($view);
-    }    
+    }
 
     /**
      * Return necessary js script
@@ -119,18 +114,17 @@ class ColumnChart extends Widget
 
         $js = "
             google.load('visualization', '1', {packages:['corechart']});
-            google.setOnLoadCallback(drawColumn". $uniqueInt .");
+            google.setOnLoadCallback(drawBar". $uniqueInt .");
         ";
         $js .= "
-            function drawColumn". $uniqueInt ."() {
+            function drawBar". $uniqueInt ."() {
 
                 var data". $uniqueInt ." = google.visualization.arrayToDataTable(". Json::encode($this->data) .");
 
-                var options_column". $uniqueInt ." = ". Json::encode($this->options) .";
+                var options_bar". $uniqueInt ." = ". Json::encode($this->options) .";
 
-                var column". $uniqueInt ." = new google.visualization.ColumnChart($('#". $this->id ."')[0]);
-                column". $uniqueInt .".draw(data". $uniqueInt .", options_column". $uniqueInt .");
-
+                var bar". $uniqueInt ." = new google.visualization.BarChart($('#". $this->id ."')[0]);
+                bar". $uniqueInt .".draw(data". $uniqueInt .", options_bar". $uniqueInt .");
             }
         ";        
         $js .= "
@@ -140,7 +134,7 @@ class ColumnChart extends Widget
                 $('.sidebar-control').on('click', resize);
 
                 function resize() {
-                    drawColumn". $uniqueInt ."();
+                    drawBar". $uniqueInt ."();
                 }
             });
         ";

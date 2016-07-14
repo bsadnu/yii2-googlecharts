@@ -10,15 +10,15 @@ use yii\web\View;
 use bsadnu\googlecharts\GoogleJsApiAsset;
 
 /**
- * Column chart widget.
- * A column graph is a chart that uses vertical bars to show comparisons among categories.
- * One axis of the chart shows the specific categories being compared, and the other axis represents a discrete value.
- * Like all Google charts, column charts display tooltips when the user hovers over the data.
- * By default, text labels are hidden, but can be turned on in chart settings.
+ * Area chart widget.
+ * An area chart or area graph displays graphically quantitive data. It is based on the line chart.
+ * The area between axis and line are commonly emphasized with colors, textures and hatchings.
+ * Commonly one compares with an area chart two or more quantities.
+ * An area chart that is rendered within the browser using SVG or VML. Displays tips when hovering over points.
  * 
  * @author Stanislav Bannikov <bsadnu@gmail.com>
  */
-class ColumnChart extends Widget
+class AreaChart extends Widget
 {
     /**
      * @var string unique id of chart
@@ -30,10 +30,10 @@ class ColumnChart extends Widget
      * Example:
      * [
      *     ['Year', 'Sales', 'Expenses'],
-     *     ['2013',  1000,      400],
-     *     ['2014',  1170,      460],
-     *     ['2015',  660,       1120],
-     *     ['2016',  1030,      540]
+     *     ['2004',  1000,      400],
+     *     ['2005',  1170,      460],
+     *     ['2006',  660,       1120],
+     *     ['2007',  1030,      540]
      * ]
      */
     public $data = [];
@@ -44,12 +44,15 @@ class ColumnChart extends Widget
      * [
      *     'fontName' => 'Verdana',
      *     'height' => 400,
+     *     'curveType' => 'function',
      *     'fontSize' => 12,
+     *     'areaOpacity' => 0.4,
      *     'chartArea' => [
      *         'left' => '5%',
      *         'width' => '90%',
      *         'height' => 350
      *     ],
+     *     'pointSize' => 4,
      *     'tooltip' => [
      *         'textStyle' => [
      *             'fontName' => 'Verdana',
@@ -62,7 +65,7 @@ class ColumnChart extends Widget
      *             'fontSize' => 13,
      *             'italic' => false
      *         ],
-     *         'gridlines' => [
+     *         'gridarea' => [
      *             'color' => '#e5e5e5',
      *             'count' => 10
      *         ],
@@ -70,7 +73,7 @@ class ColumnChart extends Widget
      *     ],
      *     'legend' => [
      *         'position' => 'top',
-     *         'alignment' => 'center',
+     *         'alignment' => 'end',
      *         'textStyle' => [
      *             'fontSize' => 12
      *         ]
@@ -78,7 +81,7 @@ class ColumnChart extends Widget
      * ]
      */
     public $options = [];
-
+    
 
     /**
      * Initializes the widget.
@@ -119,18 +122,17 @@ class ColumnChart extends Widget
 
         $js = "
             google.load('visualization', '1', {packages:['corechart']});
-            google.setOnLoadCallback(drawColumn". $uniqueInt .");
+            google.setOnLoadCallback(drawAreaChart". $uniqueInt .");
         ";
         $js .= "
-            function drawColumn". $uniqueInt ."() {
+            function drawAreaChart". $uniqueInt ."() {
 
                 var data". $uniqueInt ." = google.visualization.arrayToDataTable(". Json::encode($this->data) .");
 
-                var options_column". $uniqueInt ." = ". Json::encode($this->options) .";
+                var options". $uniqueInt ." = ". Json::encode($this->options) .";
 
-                var column". $uniqueInt ." = new google.visualization.ColumnChart($('#". $this->id ."')[0]);
-                column". $uniqueInt .".draw(data". $uniqueInt .", options_column". $uniqueInt .");
-
+                var area_chart". $uniqueInt ." = new google.visualization.AreaChart($('#". $this->id ."')[0]);
+                area_chart". $uniqueInt .".draw(data". $uniqueInt .", options". $uniqueInt .");
             }
         ";        
         $js .= "
@@ -140,7 +142,7 @@ class ColumnChart extends Widget
                 $('.sidebar-control').on('click', resize);
 
                 function resize() {
-                    drawColumn". $uniqueInt ."();
+                    drawAreaChart". $uniqueInt ."();
                 }
             });
         ";

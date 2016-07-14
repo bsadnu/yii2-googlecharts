@@ -10,15 +10,14 @@ use yii\web\View;
 use bsadnu\googlecharts\GoogleJsApiAsset;
 
 /**
- * Column chart widget.
- * A column graph is a chart that uses vertical bars to show comparisons among categories.
- * One axis of the chart shows the specific categories being compared, and the other axis represents a discrete value.
- * Like all Google charts, column charts display tooltips when the user hovers over the data.
- * By default, text labels are hidden, but can be turned on in chart settings.
+ * Stepped area chart widget.
+ * A stepped area chart is rendered within the browser using SVG or VML. Displays tips when hovering over steps.
+ * The Step Area chart type is similar to the Line chart type, but it does not use the shortest distance to connect two data points.
+ * Instead, this chart type uses vertical and horizontal lines to connect the data points in a series forming a step-like progression.
  * 
  * @author Stanislav Bannikov <bsadnu@gmail.com>
  */
-class ColumnChart extends Widget
+class SteppedAreaChart extends Widget
 {
     /**
      * @var string unique id of chart
@@ -29,11 +28,11 @@ class ColumnChart extends Widget
      * @var array table of data
      * Example:
      * [
-     *     ['Year', 'Sales', 'Expenses'],
-     *     ['2013',  1000,      400],
-     *     ['2014',  1170,      460],
-     *     ['2015',  660,       1120],
-     *     ['2016',  1030,      540]
+     *     ['Director (Year)',  'Rotten Tomatoes', 'IMDB'],
+     *     ['Alfred Hitchcock (1935)', 8.4,         7.9],
+     *     ['Ralph Thomas (1959)',     6.9,         6.5],
+     *     ['Don Sharp (1978)',        6.5,         6.4],
+     *     ['James Hawes (2008)',      4.4,         6.2]
      * ]
      */
     public $data = [];
@@ -44,20 +43,24 @@ class ColumnChart extends Widget
      * [
      *     'fontName' => 'Verdana',
      *     'height' => 400,
+     *     'isStacked' => true,
      *     'fontSize' => 12,
+     *     'areaOpacity' => 0.4,
      *     'chartArea' => [
      *         'left' => '5%',
      *         'width' => '90%',
      *         'height' => 350
      *     ],
+     *     'lineWidth' => 1,
      *     'tooltip' => [
      *         'textStyle' => [
      *             'fontName' => 'Verdana',
      *             'fontSize' => 13
      *         ]
      *     ],
+     *     'pointSize' => 5,
      *     'vAxis' => [
-     *         'title' => 'Sales and Expenses',
+     *         'title' => 'Accumulated Rating',
      *         'titleTextStyle' => [
      *             'fontSize' => 13,
      *             'italic' => false
@@ -116,21 +119,20 @@ class ColumnChart extends Widget
     private function getJs()
     {
         $uniqueInt = mt_rand(1, 999999);
-
+        
         $js = "
             google.load('visualization', '1', {packages:['corechart']});
-            google.setOnLoadCallback(drawColumn". $uniqueInt .");
+            google.setOnLoadCallback(drawSteppedAreaChart". $uniqueInt .");
         ";
         $js .= "
-            function drawColumn". $uniqueInt ."() {
+            function drawSteppedAreaChart". $uniqueInt ."() {
 
                 var data". $uniqueInt ." = google.visualization.arrayToDataTable(". Json::encode($this->data) .");
 
-                var options_column". $uniqueInt ." = ". Json::encode($this->options) .";
+                var options_stepped_area". $uniqueInt ." = ". Json::encode($this->options) .";
 
-                var column". $uniqueInt ." = new google.visualization.ColumnChart($('#". $this->id ."')[0]);
-                column". $uniqueInt .".draw(data". $uniqueInt .", options_column". $uniqueInt .");
-
+                var stepped_area_chart". $uniqueInt ." = new google.visualization.SteppedAreaChart($('#". $this->id ."')[0]);
+                stepped_area_chart". $uniqueInt .".draw(data". $uniqueInt .", options_stepped_area". $uniqueInt .");
             }
         ";        
         $js .= "
@@ -140,7 +142,7 @@ class ColumnChart extends Widget
                 $('.sidebar-control').on('click', resize);
 
                 function resize() {
-                    drawColumn". $uniqueInt ."();
+                    drawSteppedAreaChart". $uniqueInt ."();
                 }
             });
         ";
