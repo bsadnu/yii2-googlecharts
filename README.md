@@ -141,6 +141,159 @@ use bsadnu\googlecharts\ColumnChart;
 ]) ?>
 ```
 
+3) Trendlines Column Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/ColumnChartTrendlines.png)
+```php
+<?= ColumnChart::widget([
+    'id' => 'my-column-trendlines-chart-id',
+    'data' => [
+        ['Week', 'Bugs', 'Tests'],
+        [1, 175, 10],
+        [2, 159, 20],
+        [3, 126, 35],
+        [4, 129, 40],
+        [5, 108, 60],
+        [6, 92, 70],
+        [7, 55, 72],
+        [8, 50, 97]
+    ],
+    'options' => [
+        'fontName' => 'Verdana',
+        'height' => 450,
+        'curveType' => 'function',
+        'fontSize' => 12,
+        'chartArea' => [
+            'left' => 50,
+            'width' => '92%',
+            'height' => 350
+        ],
+        'hAxis' => [
+            'format' => '#',
+            'viewWindow' => [
+                'min' => 0,
+                'max' => 9
+            ],            
+            'gridlines' => [
+                'count' => 10
+            ]
+        ],   
+        'vAxis' => [
+            'title' => 'Bugs and tests',
+            'titleTextStyle' => [
+                'fontSize' => 13,
+                'italic' => false
+            ],            
+            'gridlines' => [
+                'color' => '#e5e5e5',
+                'count' => 10
+            ],
+            'minValue' => 0
+        ],
+        'colors' => [
+            '#6D4C41',
+            '#FB8C00'
+        ],
+        'trendlines' => [
+            0 => [
+                'labelInLegend' => 'Bug line',
+                'visibleInLegend' => true
+            ],            
+            1 => [
+                'labelInLegend' => 'Test line',
+                'visibleInLegend' => true
+            ]
+        ],             
+        'legend' => [
+            'position' => 'top',
+            'alignment' => 'end',
+            'textStyle' => [
+                'fontSize' => 12
+            ]
+        ]
+    ]
+]) ?>
+```
+
+4) Diff Column Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/ColumnChartDiff.png)
+```php
+<?= ColumnChart::widget([
+    'id' => 'my-column-diff-chart-id',
+    'data' => [
+        ['Name', 'Popularity'],
+        ['Cesar', 425],
+        ['Rachel', 420],
+        ['Patrick', 290],
+        ['Eric', 620],
+        ['Eugene', 520],
+        ['John', 460],
+        ['Greg', 420],
+        ['Matt', 410]
+    ],
+    'extraData' => [
+        ['Name', 'Popularity'],
+        ['Cesar', 307],
+        ['Rachel', 360],
+        ['Patrick', 200],
+        ['Eric', 550],
+        ['Eugene', 460],
+        ['John', 320],
+        ['Greg', 390],
+        ['Matt', 360]
+    ],
+    'options' => [
+        'fontName' => 'Verdana',
+        'height' => 400,
+        'fontSize' => 12,
+        'chartArea' => [
+            'left' => '5%',
+            'width' => '90%',
+            'height' => 350
+        ],
+        'colors' => [
+            '#4CAF50'
+        ],
+        'tooltip' => [
+            'textStyle' => [
+                'fontName' => 'Verdana',
+                'fontSize' => 13
+            ]
+        ],              
+        'hAxis' => [
+            'format' => '#',
+            'viewWindow' => [
+                'min' => 0,
+                'max' => 9
+            ],            
+            'gridlines' => [
+                'count' => 10
+            ]
+        ],   
+        'vAxis' => [
+            'title' => 'Popularity',
+            'titleTextStyle' => [
+                'fontSize' => 13,
+                'italic' => false
+            ],            
+            'gridlines' => [
+                'color' => '#e5e5e5',
+                'count' => 10
+            ],
+            'minValue' => 0
+        ],
+        'legend' => [
+            'position' => 'top',
+            'alignment' => 'end',
+            'textStyle' => [
+                'fontSize' => 12
+            ]
+        ]
+    ]
+]) ?>
+```
+
 ### Bar Chart Example
 ```php
 ...
@@ -778,6 +931,386 @@ use bsadnu\googlecharts\PieChart;
         'diff' => [
             'extraData' => [
                 'inCenter' => false
+            ]
+        ]
+    ]
+]) ?>
+```
+
+### Sankey Diagram Example
+```php
+...
+use bsadnu\googlecharts\Sankey;
+...
+```
+![demo](https://dl.dropboxusercontent.com/u/94373707/Sankey.png)
+```php
+<?= Sankey::widget([
+    'id' => 'my-sankey-diagram-id',
+    'data' => [
+        [ 'Brazil', 'Portugal', 4 ],
+        [ 'Brazil', 'France', 1 ],
+        [ 'Brazil', 'Spain', 1 ],
+        [ 'Brazil', 'England', 1 ],
+        [ 'Canada', 'Portugal', 1 ],
+        [ 'Canada', 'France', 4 ],
+        [ 'Canada', 'England', 1 ],
+        [ 'Mexico', 'Portugal', 1 ],
+        [ 'Mexico', 'France', 1 ],
+        [ 'Mexico', 'Spain', 4 ],
+        [ 'Mexico', 'England', 1 ],
+        [ 'USA', 'Portugal', 1 ],
+        [ 'USA', 'France', 1 ],
+        [ 'USA', 'Spain', 1 ],
+        [ 'USA', 'England', 4 ],
+        [ 'Portugal', 'Angola', 2 ],
+        [ 'Portugal', 'Senegal', 1 ],
+        [ 'Portugal', 'Morocco', 1 ],
+        [ 'Portugal', 'South Africa', 3 ],
+        [ 'France', 'Angola', 1 ],
+        [ 'France', 'Mali', 3 ],
+        [ 'France', 'Morocco', 3 ],
+        [ 'France', 'South Africa', 1 ],
+        [ 'Spain', 'Senegal', 1 ],
+        [ 'Spain', 'Morocco', 3 ],
+        [ 'Spain', 'South Africa', 1 ],
+        [ 'England', 'Angola', 1 ],
+        [ 'England', 'Senegal', 1 ],
+        [ 'England', 'Morocco', 2 ],
+        [ 'England', 'South Africa', 4 ],
+        [ 'South Africa', 'India', 1 ],
+        [ 'South Africa', 'Japan', 3 ],
+        [ 'Angola', 'China', 2 ],
+        [ 'Angola', 'India', 1 ],
+        [ 'Angola', 'Japan', 3 ],
+        [ 'Senegal', 'China', 2 ],
+        [ 'Senegal', 'India', 1 ],
+        [ 'Senegal', 'Japan', 3 ],
+        [ 'Mali', 'China', 2 ],
+        [ 'Mali', 'India', 1 ],
+        [ 'Mali', 'Japan', 3 ],
+        [ 'Morocco', 'China', 2 ],
+        [ 'Morocco', 'India', 1 ],
+        [ 'Morocco', 'Japan', 3 ],
+        [ 'Morocco', 'Senegal', 1 ]
+    ],
+    'options' => [
+        'height' => 400,
+        'sankey' => [
+            'link' => [
+                'color' => [
+                    'fill' => '#eee',
+                    'fillOpacity' => 0.3
+                ]
+            ],
+            'node' => [
+                'width' => 8,
+                'nodePadding' => 80,
+                'label' => [
+                    'fontName' => 'Verdana',
+                    'fontSize' => 13
+                ]
+            ]
+        ]
+    ]
+]) ?>
+```
+
+### Geo Chart Example
+```php
+...
+use bsadnu\googlecharts\GeoChart;
+...
+```
+![demo](https://dl.dropboxusercontent.com/u/94373707/GeoChartRegions.png)
+```php
+<?= GeoChart::widget([
+    'id' => 'my-regions-geo-chart-id',
+    'data' => [
+        ['Country', 'Popularity'],
+        ['Germany', 200],
+        ['United States', 300],
+        ['Brazil', 400],
+        ['Canada', 500],
+        ['France', 600],
+        ['RU', 700]
+    ],
+    'options' => [
+        'fontName' => 'Verdana',
+        'height' => 500,
+        'width' => '100%',
+        'fontSize' => 12,
+        'tooltip' => [
+            'textStyle' => [
+                'fontName' => 'Verdana',
+                'fontSize' => 13
+            ]
+        ]              
+    ]
+]) ?>
+```
+
+### Bubble Chart Example
+```php
+...
+use bsadnu\googlecharts\BubbleChart;
+...
+```
+1) Simple Bubble Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/BubbleChartSimple.png)
+```php
+<?= BubbleChart::widget([
+    'id' => 'my-simple-bubble-chart-id',
+    'data' => [
+        ['ID', 'Life Expectancy', 'Fertility Rate', 'Region'],
+        ['CAN',    82.66,              1.67,      'North America'],
+        ['DEU',    79.84,              1.36,      'Europe'],
+        ['DNK',    70.6,               1.84,      'Europe'],
+        ['EGY',    72.73,              2.78,      'Middle East'],
+        ['GBR',    75.05,              2,         'Europe'],
+        ['IRN',    72.49,              0.7,       'Middle East'],
+        ['IRQ',    68.09,              4.77,      'Middle East'],
+        ['ISR',    81.55,              3.96,      'Middle East'],
+        ['RUS',    68.6,               1.54,      'Europe'],
+        ['USA',    78.09,              3.05,      'North America']
+    ],
+    'options' => [
+        'fontName' => 'Verdana',
+        'height' => 450,
+        'fontSize' => 12,
+        'chartArea' => [
+            'left' => 50,
+            'width' => '90%',
+            'height' => 400
+        ],
+        'tooltip' => [
+            'textStyle' => [
+                'fontName' => 'Verdana',
+                'fontSize' => 13
+            ]
+        ],
+        'vAxis' => [
+            'title' => 'Fertility Rate',
+            'titleTextStyle' => [
+                'fontSize' => 13,
+                'italic' => false
+            ],
+            'gridlines' => [
+                'color' => '#e5e5e5',
+                'count' => 10
+            ],
+            'minValue' => 0
+        ],
+        'bubble' => [
+            'textStyle' => [
+                'auraColor' => 'none',
+                'color' => '#fff'
+            ],
+            'stroke' => '#fff'
+        ],
+        'legend' => [
+            'position' => 'top',
+            'alignment' => 'center',
+            'textStyle' => [
+                'fontSize' => 12
+            ]
+        ]
+    ]
+]) ?>
+```
+
+2) Bubble Chart Color by Numbers
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/BubbleChartColorByNumbers.png)
+```php
+<?= BubbleChart::widget([
+    'id' => 'my-colnumb-bubble-chart-id',
+    'data' => [
+        ['ID', 'X', 'Y', 'Temperature'],
+        ['',   80,  167,      120],
+        ['',   79,  136,      130],
+        ['',   78,  184,      50],
+        ['',   72,  278,      230],
+        ['',   81,  200,      210],
+        ['',   72,  170,      100],
+        ['',   68,  477,      80]
+    ],
+    'options' => [
+        'fontName' => 'Verdana',
+        'height' => 450,
+        'fontSize' => 12,
+        'chartArea' => [
+            'left' => 50,
+            'width' => '90%',
+            'height' => 400
+        ],
+        'tooltip' => [
+            'textStyle' => [
+                'fontName' => 'Verdana',
+                'fontSize' => 13
+            ]
+        ],
+        'vAxis' => [
+            'gridlines' => [
+                'color' => '#e5e5e5',
+                'count' => 10
+            ],
+            'minValue' => 0
+        ],
+        'bubble' => [
+            'textStyle' => [
+                'fontSize' => 11
+            ],
+            'stroke' => '#fff'
+        ]
+    ]
+]) ?>
+```
+
+### Scatter Chart Example
+```php
+...
+use bsadnu\googlecharts\ScatterChart;
+...
+```
+1) Simple Scatter Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/ScatterChartSimple.png)
+```php
+<?= ScatterChart::widget([
+    'id' => 'my-scatter-simple-chart-id',
+    'data' => [
+        ['Age', 'Weight'],
+        [ 8,      12],
+        [ 4,      6],
+        [ 11,     14],
+        [ 4,      5],
+        [ 3,      3.5],
+        [ 6.5,    7],
+        [ 7,    10],
+        [ 6.5,    12],
+        [ 6,    13],
+        [ 8,    16],
+        [ 12,    17],
+        [ 18,    8],
+        [ 18,    9],
+        [ 16,    12]
+    ],
+    'options' => [
+        'fontName' => 'Verdana',
+        'height' => 450,
+        'fontSize' => 12,
+        'chartArea' => [
+            'left' => 50,
+            'width' => '90%',
+            'height' => 400
+        ],
+        'tooltip' => [
+            'textStyle' => [
+                'fontName' => 'Verdana',
+                'fontSize' => 13
+            ]
+        ],
+        'hAxis' => [
+            'minValue' => 0,
+            'maxValue' => 15
+        ],        
+        'vAxis' => [
+            'title' => 'Weight',
+            'titleTextStyle' => [
+                'fontSize' => 13,
+                'italic' => false
+            ],            
+            'gridlines' => [
+                'color' => '#e5e5e5',
+                'count' => 10
+            ],
+            'minValue' => 0,
+            'maxValue' => 15
+        ],
+        'legend' => 'none',
+        'pointSize' => 10,
+        'colors' => [
+            '#E53935'
+        ]
+    ]
+]) ?>
+```
+
+2) Diff Scatter Chart
+
+![demo](https://dl.dropboxusercontent.com/u/94373707/ScatterChartDiff.png)
+```php
+<?= ScatterChart::widget([
+    'id' => 'my-scatter-diff-chart-id',
+    'data' => [
+        ['', 'Medicine 1', 'Medicine 2'],
+        [23, null, 12], [9, null, 39], [15, null, 28],
+        [37, null, 30], [21, null, 14], [12, null, 18],
+        [29, null, 34], [ 8, null, 12], [38, null, 28],
+        [35, null, 12], [26, null, 10], [10, null, 29],
+        [11, null, 10], [27, null, 38], [39, null, 17],
+        [34, null, 20], [38, null,  5], [33, null, 27],
+        [23, null, 39], [12, null, 10], [ 8, 15, null],
+        [39, 15, null], [27, 31, null], [30, 24, null],
+        [31, 39, null], [35,  6, null], [ 5,  5, null],
+        [19, 39, null], [22,  8, null], [19, 23, null],
+        [27, 20, null], [11,  6, null], [34, 33, null],
+        [38,  8, null], [39, 29, null], [13, 23, null],
+        [13, 36, null], [39,  6, null], [14, 37, null], [13, 39, null]
+    ],
+    'extraData' => [
+        ['', 'Medicine 1', 'Medicine 2'],
+        [22, null, 12], [7, null, 40], [14, null, 31],
+        [37, null, 30], [18, null, 17], [9, null, 20],
+        [26, null, 36], [5, null, 13], [36, null, 30],
+        [35, null, 15], [24, null, 12], [7, null, 31],
+        [10, null, 12], [24, null, 40], [37, null, 18],
+        [32, null, 21], [35, null, 7], [31, null, 30],
+        [21, null, 42], [12, null, 10], [10, 13, null],
+        [40, 12, null], [28, 29, null], [32, 22, null],
+        [31, 37, null], [38, 5, null], [6, 4, null],
+        [21, 36, null], [22, 8, null], [21, 22, null],
+        [28, 17, null], [12, 5, null], [37, 30, null],
+        [41, 7, null], [41, 27, null], [15, 20, null],
+        [14, 36, null], [42, 3, null], [14, 37, null], [15, 36, null]
+    ],
+    'options' => [
+        'fontName' => 'Verdana',
+        'height' => 450,
+        'fontSize' => 12,
+        'chartArea' => [
+            'left' => 50,
+            'width' => '90%',
+            'height' => 400
+        ],
+        'tooltip' => [
+            'textStyle' => [
+                'fontName' => 'Verdana',
+                'fontSize' => 13
+            ]
+        ],
+        'hAxis' => [
+            'minValue' => 0
+        ],        
+        'vAxis' => [
+            'gridlines' => [
+                'color' => '#e5e5e5',
+                'count' => 5
+            ],
+            'minValue' => 0
+        ],
+        'legend' => [
+            'position' => 'top',
+            'alignment' => 'center',
+            'textStyle' => [
+                'fontSize' => 12
+            ]
+        ],
+        'diff' => [
+            'oldData' => [
+                'opacity' => 0.5
             ]
         ]
     ]
