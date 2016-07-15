@@ -27,16 +27,44 @@ class ColumnChart extends Widget
 
     /**
      * @var array table of data
+     * Counts as old or previos dataset in diff chart case
      * Example:
      * [
-     *     ['Year', 'Sales', 'Expenses'],
-     *     ['2013',  1000,      400],
-     *     ['2014',  1170,      460],
-     *     ['2015',  660,       1120],
-     *     ['2016',  1030,      540]
+     *     ['Name', 'Popularity'],
+     *     ['Cesar', 425],
+     *     ['Rachel', 420],
+     *     ['Patrick', 290],
+     *     ['Eric', 620],
+     *     ['Eugene', 520],
+     *     ['John', 460],
+     *     ['Greg', 420],
+     *     ['Matt', 410]
      * ]
      */
     public $data = [];
+
+    /**
+     * @var array table of extra data necessary for diff chart types
+     * Counts as new dataset in diff chart case
+     * 
+     * A diff chart is a chart designed to highlight the differences between two charts with comparable data.
+     * By making the changes between analogous values prominent, they can reveal variations between datasets.
+     * You create a diff chart by calling the computeDiff method with two datasets to generate a third dataset representing the diff, and then drawing that.
+     * 
+     * Example:
+     * [
+     *     ['Name', 'Popularity'],
+     *     ['Cesar', 307],
+     *     ['Rachel', 360],
+     *     ['Patrick', 200],
+     *     ['Eric', 550],
+     *     ['Eugene', 460],
+     *     ['John', 320],
+     *     ['Greg', 390],
+     *     ['Matt', 360]
+     * ]
+     */
+    public $extraData = [];    
 
     /**
      * @var array options
@@ -50,6 +78,9 @@ class ColumnChart extends Widget
      *         'width' => '90%',
      *         'height' => 350
      *     ],
+     *     'colors' => [
+     *         '#4CAF50'
+     *     ],
      *     'tooltip' => [
      *         'textStyle' => [
      *             'fontName' => 'Verdana',
@@ -57,7 +88,7 @@ class ColumnChart extends Widget
      *         ]
      *     ],
      *     'vAxis' => [
-     *         'title' => 'Sales and Expenses',
+     *         'title' => 'Popularity',
      *         'titleTextStyle' => [
      *             'fontSize' => 13,
      *             'italic' => false
@@ -70,7 +101,7 @@ class ColumnChart extends Widget
      *     ],
      *     'legend' => [
      *         'position' => 'top',
-     *         'alignment' => 'center',
+     *         'alignment' => 'end',
      *         'textStyle' => [
      *             'fontSize' => 12
      *         ]
@@ -121,18 +152,37 @@ class ColumnChart extends Widget
             google.load('visualization', '1', {packages:['corechart']});
             google.setOnLoadCallback(drawColumn". $uniqueInt .");
         ";
-        $js .= "
-            function drawColumn". $uniqueInt ."() {
+        if (!empty($this->extraData)) {
+            $js .= "
+                function drawColumn". $uniqueInt ."() {
 
-                var data". $uniqueInt ." = google.visualization.arrayToDataTable(". Json::encode($this->data) .");
+                    var oldData". $uniqueInt ." = google.visualization.arrayToDataTable(". Json::encode($this->data) .");
 
-                var options_column". $uniqueInt ." = ". Json::encode($this->options) .";
+                    var newData". $uniqueInt ." = google.visualization.arrayToDataTable(". Json::encode($this->extraData) .");
 
-                var column". $uniqueInt ." = new google.visualization.ColumnChart($('#". $this->id ."')[0]);
-                column". $uniqueInt .".draw(data". $uniqueInt .", options_column". $uniqueInt .");
+                    var options". $uniqueInt ." = ". Json::encode($this->options) .";
 
-            }
-        ";        
+                    var column". $uniqueInt ." = new google.visualization.ColumnChart($('#". $this->id ."')[0]);
+
+                    var diffData". $uniqueInt ." = column". $uniqueInt .".computeDiff(oldData". $uniqueInt .", newData". $uniqueInt .");
+
+                    column". $uniqueInt .".draw(diffData". $uniqueInt .", options". $uniqueInt .");
+                }
+            ";
+        } else {
+            $js .= "
+                function drawColumn". $uniqueInt ."() {
+
+                    var data". $uniqueInt ." = google.visualization.arrayToDataTable(". Json::encode($this->data) .");
+
+                    var options". $uniqueInt ." = ". Json::encode($this->options) .";
+
+                    var column". $uniqueInt ." = new google.visualization.ColumnChart($('#". $this->id ."')[0]);
+
+                    column". $uniqueInt .".draw(data". $uniqueInt .", options". $uniqueInt .");
+                }
+            ";            
+        }        
         $js .= "
             $(function () {
 
