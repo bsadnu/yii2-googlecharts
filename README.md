@@ -37,7 +37,7 @@ use bsadnu\googlecharts\ColumnChart;
 ```
 1) Simple Column Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/ColumnChartSimple.png)
+![demo](https://drive.google.com/open?id=0B6SM__osLj2bM2JMS1dnWWdJak0)
 ```php
 <?= ColumnChart::widget([
 	'id' => 'my-column-chart-id',
