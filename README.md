@@ -727,7 +727,7 @@ use bsadnu\googlecharts\AreaChart;
 ```
 1) Simple Area Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/AreaChart.png)
+![demo](https://www.dropbox.com/s/1q9n3fxbr20u6nh/AreaChart.png?dl=0)
 ```php
 <?= AreaChart::widget([
 	'id' => 'my-simple-area-chart-id',
