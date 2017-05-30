@@ -88,7 +88,7 @@ use bsadnu\googlecharts\ColumnChart;
 
 2) Stacked Column Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/ColumnChartStacked.png)
+![demo](http://img.sbannikov.info/ColumnChartStacked.png)
 ```php
 <?= ColumnChart::widget([
 	'id' => 'my-stacked-column-chart-id',
@@ -143,7 +143,7 @@ use bsadnu\googlecharts\ColumnChart;
 
 3) Trendlines Column Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/ColumnChartTrendlines.png)
+![demo](http://img.sbannikov.info/ColumnChartTrendlines.png)
 ```php
 <?= ColumnChart::widget([
     'id' => 'my-column-trendlines-chart-id',
@@ -217,7 +217,7 @@ use bsadnu\googlecharts\ColumnChart;
 
 4) Diff Column Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/ColumnChartDiff.png)
+![demo](http://img.sbannikov.info/ColumnChartDiff.png)
 ```php
 <?= ColumnChart::widget([
     'id' => 'my-column-diff-chart-id',
@@ -302,7 +302,7 @@ use bsadnu\googlecharts\BarChart;
 ```
 1) Simple Bar Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/BarChart.png)
+![demo](http://img.sbannikov.info/BarChart.png)
 ```php
 <?= BarChart::widget([
 	'id' => 'my-bar-chart-id',
@@ -348,7 +348,7 @@ use bsadnu\googlecharts\BarChart;
 
 2) Stacked Bar Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/BarChartStacked.png)
+![demo](http://img.sbannikov.info/BarChartStacked.png)
 ```php
 <?= BarChart::widget([
 	'id' => 'my-stacked-bar-chart-id',
@@ -402,7 +402,7 @@ use bsadnu\googlecharts\BarChart;
 use bsadnu\googlecharts\Histogram;
 ...
 ```
-![demo](https://dl.dropboxusercontent.com/u/94373707/Histogram.png)
+![demo](http://img.sbannikov.info/Histogram.png)
 ```php
 <?= Histogram::widget([
 	'id' => 'my-simple-histogram-id',
@@ -488,7 +488,7 @@ use bsadnu\googlecharts\Histogram;
 use bsadnu\googlecharts\ComboChart;
 ...
 ```
-![demo](https://dl.dropboxusercontent.com/u/94373707/ComboChart.png)
+![demo](http://img.sbannikov.info/ComboChart.png)
 ```php
 <?= ComboChart::widget([
 	'id' => 'my-combo-chart-id',
@@ -548,7 +548,7 @@ use bsadnu\googlecharts\LineChart;
 ```
 1) Simple Line Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/LineChartSimple.png)
+![demo](http://img.sbannikov.info/LineChartSimple.png)
 ```php
 <?= LineChart::widget([
 	'id' => 'my-simple-line-chart-id',
@@ -601,7 +601,7 @@ use bsadnu\googlecharts\LineChart;
 
 2) Line Intervals Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/LineChartIntervals.png)
+![demo](http://img.sbannikov.info/LineChartIntervals.png)
 ```php
 <?= LineChart::widget([
 	'id' => 'my-line-intervals-id',
@@ -661,7 +661,7 @@ use bsadnu\googlecharts\LineChart;
 
 3) Line Intervals Area Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/LineChartIntervalsArea.png)
+![demo](http://img.sbannikov.info/LineChartIntervalsArea.png)
 ```php
 <?= LineChart::widget([
 	'id' => 'my-area-intervals-id',
@@ -727,7 +727,7 @@ use bsadnu\googlecharts\AreaChart;
 ```
 1) Simple Area Chart
 
-![demo](https://www.dropbox.com/s/1q9n3fxbr20u6nh/AreaChart.png?dl=0)
+![demo](http://img.sbannikov.info/AreaChart.png)
 ```php
 <?= AreaChart::widget([
 	'id' => 'my-simple-area-chart-id',
@@ -781,7 +781,7 @@ use bsadnu\googlecharts\AreaChart;
 
 2) Stacked Area Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/AreaChartStacked.png)
+![demo](http://img.sbannikov.info/AreaChartStacked.png)
 ```php
 <?= AreaChart::widget([
 	'id' => 'my-staked-area-chart-id',
@@ -841,7 +841,7 @@ use bsadnu\googlecharts\AreaChart;
 use bsadnu\googlecharts\SteppedAreaChart;
 ...
 ```
-![demo](https://dl.dropboxusercontent.com/u/94373707/SteppedAreaChart.png)
+![demo](http://img.sbannikov.info/SteppedAreaChart.png)
 ```php
 <?= SteppedAreaChart::widget([
 	'id' => 'my-stepped-area-chart-id',
@@ -899,7 +899,7 @@ use bsadnu\googlecharts\SteppedAreaChart;
 use bsadnu\googlecharts\PieChart;
 ...
 ```
-![demo](https://dl.dropboxusercontent.com/u/94373707/PieChart.png)
+![demo](http://img.sbannikov.info/PieChart.png)
 ```php
 <?= PieChart::widget([
     'id' => 'my-pie-chart-id',
@@ -943,7 +943,7 @@ use bsadnu\googlecharts\PieChart;
 use bsadnu\googlecharts\Sankey;
 ...
 ```
-![demo](https://dl.dropboxusercontent.com/u/94373707/Sankey.png)
+![demo](http://img.sbannikov.info/Sankey.png)
 ```php
 <?= Sankey::widget([
     'id' => 'my-sankey-diagram-id',
@@ -1022,7 +1022,7 @@ use bsadnu\googlecharts\Sankey;
 use bsadnu\googlecharts\GeoChart;
 ...
 ```
-![demo](https://dl.dropboxusercontent.com/u/94373707/GeoChartRegions.png)
+![demo](http://img.sbannikov.info/GeoChartRegions.png)
 ```php
 <?= GeoChart::widget([
     'id' => 'my-regions-geo-chart-id',
@@ -1058,7 +1058,7 @@ use bsadnu\googlecharts\BubbleChart;
 ```
 1) Simple Bubble Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/BubbleChartSimple.png)
+![demo](http://img.sbannikov.info/BubbleChartSimple.png)
 ```php
 <?= BubbleChart::widget([
     'id' => 'my-simple-bubble-chart-id',
@@ -1122,7 +1122,7 @@ use bsadnu\googlecharts\BubbleChart;
 
 2) Bubble Chart Color by Numbers
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/BubbleChartColorByNumbers.png)
+![demo](http://img.sbannikov.info/BubbleChartColorByNumbers.png)
 ```php
 <?= BubbleChart::widget([
     'id' => 'my-colnumb-bubble-chart-id',
@@ -1176,7 +1176,7 @@ use bsadnu\googlecharts\ScatterChart;
 ```
 1) Simple Scatter Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/ScatterChartSimple.png)
+![demo](http://img.sbannikov.info/ScatterChartSimple.png)
 ```php
 <?= ScatterChart::widget([
     'id' => 'my-scatter-simple-chart-id',
@@ -1240,7 +1240,7 @@ use bsadnu\googlecharts\ScatterChart;
 
 2) Diff Scatter Chart
 
-![demo](https://dl.dropboxusercontent.com/u/94373707/ScatterChartDiff.png)
+![demo](http://img.sbannikov.info/ScatterChartDiff.png)
 ```php
 <?= ScatterChart::widget([
     'id' => 'my-scatter-diff-chart-id',
