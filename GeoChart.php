@@ -80,7 +80,7 @@ class GeoChart extends Widget
     }
 
     /**
-     * Registers necessary assets
+     * Registers necessary assets.
      */
     public function registerAssets()
     {
@@ -89,7 +89,7 @@ class GeoChart extends Widget
     }
 
     /**
-     * Return necessary js script
+     * Return necessary javascript.
      */
     private function getJs()
     {
