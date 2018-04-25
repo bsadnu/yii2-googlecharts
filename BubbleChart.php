@@ -115,7 +115,7 @@ class BubbleChart extends Widget
     }
 
     /**
-     * Registers necessary assets
+     * Registers necessary assets.
      */
     public function registerAssets()
     {
@@ -124,7 +124,7 @@ class BubbleChart extends Widget
     }
 
     /**
-     * Return necessary js script
+     * Return necessary javascript.
      */
     private function getJs()
     {
