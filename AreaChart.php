@@ -30,10 +30,10 @@ class AreaChart extends Widget
      * Example:
      * [
      *     ['Year', 'Sales', 'Expenses'],
-     *     ['2004',  1000,      400],
-     *     ['2005',  1170,      460],
-     *     ['2006',  660,       1120],
-     *     ['2007',  1030,      540]
+     *     ['2004', 1000, 400],
+     *     ['2005', 1170, 460],
+     *     ['2006', 660, 1120],
+     *     ['2007', 1030, 540]
      * ]
      */
     public $data = [];
@@ -105,7 +105,7 @@ class AreaChart extends Widget
     }
 
     /**
-     * Registers necessary assets
+     * Registers necessary assets.
      */
     public function registerAssets()
     {
@@ -114,7 +114,7 @@ class AreaChart extends Widget
     }    
 
     /**
-     * Return necessary js script
+     * Return necessary javascript.
      */
     private function getJs()
     {
