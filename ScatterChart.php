@@ -144,7 +144,7 @@ class ScatterChart extends Widget
     }
 
     /**
-     * Registers necessary assets
+     * Registers necessary assets.
      */
     public function registerAssets()
     {
@@ -153,7 +153,7 @@ class ScatterChart extends Widget
     }
 
     /**
-     * Return necessary js script
+     * Return necessary javascript.
      */
     private function getJs()
     {
