@@ -105,7 +105,7 @@ class SteppedAreaChart extends Widget
     }
 
     /**
-     * Registers necessary assets
+     * Registers necessary assets.
      */
     public function registerAssets()
     {
@@ -114,7 +114,7 @@ class SteppedAreaChart extends Widget
     }    
 
     /**
-     * Return necessary js script
+     * Return necessary javascript.
      */
     private function getJs()
     {
