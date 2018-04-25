@@ -133,7 +133,7 @@ class Histogram extends Widget
     }
 
     /**
-     * Registers necessary assets
+     * Registers necessary assets.
      */
     public function registerAssets()
     {
@@ -142,7 +142,7 @@ class Histogram extends Widget
     }
 
     /**
-     * Return necessary js script
+     * Return necessary javascript.
      */
     private function getJs()
     {
