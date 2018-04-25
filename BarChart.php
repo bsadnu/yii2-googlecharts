@@ -97,7 +97,7 @@ class BarChart extends Widget
     }
 
     /**
-     * Registers necessary assets
+     * Registers necessary assets.
      */
     public function registerAssets()
     {
@@ -106,7 +106,7 @@ class BarChart extends Widget
     }
 
     /**
-     * Return necessary js script
+     * Return necessary javascript.
      */
     private function getJs()
     {
