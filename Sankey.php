@@ -125,7 +125,7 @@ class Sankey extends Widget
     }
 
     /**
-     * Registers necessary assets
+     * Registers necessary assets.
      */
     public function registerAssets()
     {
@@ -134,7 +134,7 @@ class Sankey extends Widget
     }    
 
     /**
-     * Return necessary js script
+     * Return necessary javascript.
      */
     private function getJs()
     {
